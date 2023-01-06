@@ -1,76 +1,71 @@
-print("hello world")
+from random import randint, random
+# 코드가 느려질수있으므로 import 해서 module에서 function을 가져온다
+# https://docs.python.org/ko/3/library/index.html
 
-a= 3
-b =2
-c= a+b
-print(c)
 
-my_name = "roh"
-print(my_name)
 
-bool = True
-
-def say_hello():
-    print("h1")
-# print가 say_hello 안에있음을 명시하는 빈 공백
-say_hello()
-
-def say_goodbye(name, age):
-    print(name, "whatsup", age)
-say_goodbye("imonkfcwifi",26)
-
-# parameter = 밖에서 받을 데이터의 placeholder 역할 (넣을 공간 박스의 이름 name)
-# parameter에 넣는 인자 (실제로 넣는데이터) = argmument(imonkfcwifi)
-
-def say_goodbyeyo(name="anno"):
-    print(name)
-say_goodbyeyo()
-
-def plus(a=0, b=0):
-    print(a + b)
-
-def minus(a=0, b=0):
-    print(a - b)
-
-def multiply(a=0, b=0):
-    print(a * b)
-
-def divide(a=0, b=1):
-    print(a / b)
-
-def power(a=0, b=1):
-    print(a ** b)
-
-# 함수에 필요한 모든 parameter들을 보내지 않는 경우를 관리한다.
-
-def tax_value(money):
-   return money
-
-#    return 이란 함수 바깥으로 값을 보낸다는 의미
-
-def pay(tax):
-    print("your tax is :", tax)
-
-# to_play = tax_value(3000000)
-# pay(to_play)
-
-pay(tax_value(30000000))
-
-my_age = 12
-my_ha = "ha"
-
-print(f"my name is {my_ha}, my age is {my_age}")
-# string 안에 변수넣는법 -> f""
-
-def juice_maker(fruit):
-    return f"{fruit}+🍧"
-def add_ice(juice):
-    return f"{juice}+🧊"
-def add_sugar(iced_juice):
-    return f"{iced_juice}+🥂"
+if 5<19:
+    print("hi")
     
-juice = juice_maker("사과")
-juice2 = add_ice(juice)
-comeplete_juice = add_sugar(juice2)
+a = 10
+# 10이라는 값을 a라는 variable에 넣는다는 뜻
 
-print(comeplete_juice)
+if a == 10:
+    print('true')
+# 왼쪽 a이 오른쪽 10과 같은지 확인
+
+password_correct = True
+
+if password_correct:
+    print("take this money")
+else:
+    print("wrong password")
+
+winner = 10
+
+if winner >10:
+    print("winner is grater than 10")
+elif winner <10:
+    print("winner is less than 10")
+elif winner!=10:
+    print("noooo")
+else:
+    print("winner is 10")
+
+age = input("how old are you?")
+
+print("user answer", age)
+
+print(type(age))
+
+age2 = int(input("how old are you?"))
+
+if(age2>20):
+  print("go ahead",age2)
+elif(age2>100):
+    print("wait waht")
+else:
+    print("nah")
+    
+distance = 0
+while distance <= 20 :
+    print("gogogogogo", distance)
+    distance = distance +1
+
+# casino game
+
+pc_choice = randint(1,50)
+user_choice = int(input("choose a number"))
+playing = True
+
+while playing:
+
+    if user_choice==pc_choice:
+        print("you won!",pc_choice)
+        playing =False
+    elif user_choice>pc_choice:
+        print("high", pc_choice)
+    elif user_choice<pc_choice:
+        print("low",pc_choice)
+
+
