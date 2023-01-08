@@ -13,3 +13,19 @@ print(name.upper)
 numbers = ("1","2","3")
 
 # tuples 는 불변성을 가진다. method를 추가하려고해도 추가할게 많이 없음
+
+player = {
+    'name' : 'imnofkcwifi',
+    'age':12,
+    'alive':True,
+    'food':["noodle","pizza"]
+}
+
+print(player.get('age'))
+print(player)
+player.pop('age')
+player['xp']=1500
+print(player)
+player['food'].append("ramen")
+print(player)
+# dicts 구조는 key*value 값 쌍으로 이루어져있다.
