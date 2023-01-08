@@ -1,71 +1,11 @@
-from random import randint, random
-# 코드가 느려질수있으므로 import 해서 module에서 function을 가져온다
-# https://docs.python.org/ko/3/library/index.html
+days_of_week = ["Mon" ,"Tue", "Wed", "Thu" , "Fri"]
 
+print(days_of_week)
+# list\\
 
+name = "roh"
 
-if 5<19:
-    print("hi")
-    
-a = 10
-# 10이라는 값을 a라는 variable에 넣는다는 뜻
-
-if a == 10:
-    print('true')
-# 왼쪽 a이 오른쪽 10과 같은지 확인
-
-password_correct = True
-
-if password_correct:
-    print("take this money")
-else:
-    print("wrong password")
-
-winner = 10
-
-if winner >10:
-    print("winner is grater than 10")
-elif winner <10:
-    print("winner is less than 10")
-elif winner!=10:
-    print("noooo")
-else:
-    print("winner is 10")
-
-age = input("how old are you?")
-
-print("user answer", age)
-
-print(type(age))
-
-age2 = int(input("how old are you?"))
-
-if(age2>20):
-  print("go ahead",age2)
-elif(age2>100):
-    print("wait waht")
-else:
-    print("nah")
-    
-distance = 0
-while distance <= 20 :
-    print("gogogogogo", distance)
-    distance = distance +1
-
-# casino game
-
-pc_choice = randint(1,50)
-user_choice = int(input("choose a number"))
-playing = True
-
-while playing:
-
-    if user_choice==pc_choice:
-        print("you won!",pc_choice)
-        playing =False
-    elif user_choice>pc_choice:
-        print("high", pc_choice)
-    elif user_choice<pc_choice:
-        print("low",pc_choice)
-
-
+print(name.upper)
+# .을 붙이면 뒤에 나오는 function은 함수들 method다
+# method는 데이터 뒤에 결합된 function이다
+# print(), random()<-와 같은 것들은 function// name. <- 에 들어가는 기능들은 method
