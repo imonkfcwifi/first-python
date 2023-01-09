@@ -1,3 +1,6 @@
+from random import randint
+from requests import get
+
 days_of_week = ["Mon" ,"Tue", "Wed", "Thu" , "Fri"]
 
 print(days_of_week.count("Mon"))
@@ -29,3 +32,22 @@ print(player)
 player['food'].append("ramen")
 print(player)
 # dicts 구조는 key*value 값 쌍으로 이루어져있다.
+
+websites = (
+    "https://google.com",
+    "naver.com",
+    "twich.tv"
+)
+result = {}
+for website in websites:
+    print("hello world! with",website)
+    if not website.startswith("https://"):
+        website = f"https://{website}"
+        result[website] = "OK"
+    response = get(website)
+    if response.status_code == 200:
+        print(f"{website} is OK")
+
+print(result)
+    
+# https://pypi.org/ 에서 module 들을 가져올수있음
