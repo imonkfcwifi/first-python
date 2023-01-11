@@ -1,49 +1,22 @@
-def say_hello(name, age):
-    print(f"Hello {name} are you {age} years old")
-say_hello("imonkfcwifi", 21)
-# position argument
-say_hello(age= 12, name="imonkfcwifi")
-# keyword Arguments 
-
-list_of_numbers = [1,2,3]
-first, second, third = list_of_numbers
-# 각요소를 변수로 만들고 싶을때
-
-
 from requests import get
 from bs4 import BeautifulSoup
-base_Url = "https://weworkremotely.com/remote-jobs/search?term="
+from extractors.wwr import extract_wwr_jobs
 
+# Refactor 리팩터링은 소프트웨어 공학에서 '결과의 변경 없이 코드의 구조를 재조정함'을 뜻한다. 주로 가독성을 높이고 유지보수를 편하게 한다. 
+# 버그를 없애거나 새로운 기능을 추가하는 행위는 아니다. 사용자가 보는 외부 화면은 그대로 두면서 내부 논리나 구조를 바꾸고 개선하는 유지보수 행위이다.
+
+base_url = "https://kr.indeed.com/jobs?q="
 search_term = "python"
 
-response = get(f"{base_Url}{search_term}")
-if response.status_code != 200:
-    print("cant request")
-else:
-    results =[]
-    soup = BeautifulSoup(response.text, "html.parser")
-    jobs = soup.find_all('section', class_='jobs')
-    # class가 jobs인 section들을 찾기
-    # class라는 keyword는 이미 python에서 사용하고있기때문에 class_
-    # if나 else를 변수명으로 설정할수없는것과 같다
-    for job in jobs:
-        job_post = job.find_all('li')
-        # find _all은 list를 가져오고 find는 결과를 가져옴
-        job_post.pop(-1)
-        for post in job_post:
-            anchors = post.find_all('a') 
-            anchor = anchors[1]
-            link = anchor['href']
-            company , kind, region = anchor.find_all('span', class_="company")
-            title = anchor.find('span', class_='title')
-            job_data_dict = {
-                'company' : company.string,
-                'kind' : kind.string,
-                'region' : region.string,
-                'title' : title.string
-            }
-            results.append(job_data_dict)
-            # 이렇게 외부 저장소에 저장해주면 작업이 끝난 이후에도 사라지지 않음
-    for result in results:
-        print(result)
+response = get(f"{base_url}{search_term}")
 
+if response.status_code != 200:
+    print("X")
+else:
+    soup = BeautifulSoup(response.text,"html.parser")
+    job_list = soup.find("ul", class_="jobsearch-ResultsList")
+    jobs = job_list.find_all('li', recursive=False)
+
+    for job in jobs:
+        print(job)
+        print("/////")
